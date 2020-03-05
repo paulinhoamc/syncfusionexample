@@ -1,0 +1,51 @@
+﻿@model AppCore.Models.DataModel.Produto
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Produto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="e-input" maxlength="50" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Estoque" class="control-label">Estoque</label>
+                <ejs-numerictextbox id="Estoque" ejs-for="Estoque" format="n3"></ejs-numerictextbox>
+                <span asp-validation-for="Estoque" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Valor" class="control-label">Valor</label>
+                <ejs-numerictextbox id="Valor" ejs-for="Valor" format="c"></ejs-numerictextbox>
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <ejs-richtexteditor id="Notas" ejs-for="Notas" height="300px"></ejs-richtexteditor>
+                <span asp-validation-for="Notas" class="text-danger"></span>
+            </div>
+            <div class="form-group text-right">
+                <ejs-checkbox id="Ativo" ejs-for="Ativo" label="Ativo" checked="true"></ejs-checkbox>
+            </div>
+            <div class="form-group">
+                <ejs-button id="salvar" content="Save" isPrimary="true"></ejs-button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
